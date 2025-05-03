@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minecraft Launcher</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/site.webmanifest">
+</head>
+<body>
+    <div class="launcher-container">
+        <div class="sidebar">
+            <div class="logo">
+                <img src="assets/minecraft-logo.png" alt="Minecraft Logo">
+                <link rel="icon" type="image/png" href="/assets/minecraft-logo.png">
+            </div>
+            <div class="profile-section">
+                <div class="profile-img">
+                    <img src="assets/steve.png" alt="Player Skin">
+                </div>
+                <span class="player-name">Player</span>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="download-progress-container hidden" id="download-progress">
+                <div class="progress-info">
+                    <span class="progress-text">Downloading...</span>
+                    <span class="progress-percentage">0%</span>
+                </div>
+                <div class="progress-bar">
+                    <div class="progress-bar-fill"></div>
+                </div>
+                <div class="progress-details">
+                    <span class="downloaded-size">0 MB</span>
+                    <span class="total-size">0 MB</span>
+                </div>
+            </div>
+            <nav class="nav-tabs">
+                <button class="tab-btn active" data-tab="play">Play</button>
+                <button class="tab-btn" data-tab="installations">Installations</button>
+                <button class="tab-btn" data-tab="skins">Skins</button>
+            </nav>
+            <div class="banner-section">
+                <img src="assets/banner.png" alt="Minecraft Banner" class="banner-image">
+            </div>
+            <div class="tab-content" id="play-tab">
+                <div class="version-selector">
+                    <select id="instance-select">
+                        <option value="">Select an installation...</option>
+                    </select>
+                    <button id="play-btn" class="play-button">PLAY</button>
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="installations-tab">
+                <div class="installations-header">
+                    <button id="new-installation" class="new-installation-btn">
+                        <span class="material-icons">add</span>
+                        New Installation
+                    </button>
+                    <button id="new-url-installation" class="new-installation-btn">
+                        <span class="material-icons">link</span>
+                        From URL
+                    </button>
+                </div>
+                <div class="installations-scroll">
+                    <div class="installations-list">
+                        <!-- Installations will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="skins-tab">
+                <div class="skins-content">
+                    <h2>Skins feature not available in web version</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="error-message" id="error-message"></div>
+    
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+        <div class="loading-text" id="loading-text">Loading...</div>
+    </div>
+
+    <!-- Installation Modal -->
+    <div id="installation-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create New Installation</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="installation-form">
+                    <div class="form-group">
+                        <label for="installation-name">NAME</label>
+                        <input type="text" id="installation-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="version-select">VERSION</label>
+                        <select id="version-select" required>
+                            <!-- Versions will be populated from versions.json -->
+                        </select>
+                    </div>
+                    <div class="form-group window-size">
+                        <label>WINDOW SIZE</label>
+                        <div class="size-inputs">
+                            <div class="size-input">
+                                <label for="window-width">Width</label>
+                                <input type="number" id="window-width" value="1280" min="800" required>
+                            </div>
+                            <div class="size-input">
+                                <label for="window-height">Height</label>
+                                <input type="number" id="window-height" value="720" min="600" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="installation-icon">ICON</label>
+                        <select id="installation-icon" required>
+                            <!-- Icons will be populated from icons.json -->
+                        </select>
+                    </div>
+                    <div class="form-group custom-icon">
+                        <label for="installation-custom-icon">CUSTOM ICON URL (Optional)</label>
+                        <input type="url" id="installation-custom-icon" placeholder="https://...">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="create-btn">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Edit Installation Modal -->
+    <div id="edit-installation-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Installation</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="edit-installation-form">
+                    <input type="hidden" id="edit-installation-old-name">
+                    <div class="form-group">
+                        <label for="edit-installation-name">NAME</label>
+                        <input type="text" id="edit-installation-name" required>
+                    </div>
+                    <div class="form-group window-size">
+                        <label>WINDOW SIZE</label>
+                        <div class="size-inputs">
+                            <div class="size-input">
+                                <label for="edit-window-width">Width</label>
+                                <input type="number" id="edit-window-width" value="1280" min="800" required>
+                            </div>
+                            <div class="size-input">
+                                <label for="edit-window-height">Height</label>
+                                <input type="number" id="edit-window-height" value="720" min="600" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-installation-icon">ICON</label>
+                        <select id="edit-installation-icon" required>
+                            <!-- Icons will be populated from icons.json -->
+                        </select>
+                    </div>
+                    <div class="form-group custom-icon">
+                        <label for="edit-installation-custom-icon">CUSTOM ICON URL (Optional)</label>
+                        <input type="url" id="edit-installation-custom-icon" placeholder="https://...">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="create-btn">Save Changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- URL Installation Modal -->
+    <div id="url-installation-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add Installation from URL</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <form id="url-installation-form">
+                    <div class="form-group">
+                        <label for="url-installation-name">NAME</label>
+                        <input type="text" id="url-installation-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="url-installation-url">ZIP FILE URL</label>
+                        <input type="url" id="url-installation-url" required placeholder="https://...">
+                    </div>
+                    <div class="form-group window-size">
+                        <label>WINDOW SIZE</label>
+                        <div class="size-inputs">
+                            <div class="size-input">
+                                <label for="url-window-width">Width</label>
+                                <input type="number" id="url-window-width" value="1280" min="800" required>
+                            </div>
+                            <div class="size-input">
+                                <label for="url-window-height">Height</label>
+                                <input type="number" id="url-window-height" value="720" min="600" required>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="url-installation-icon">ICON</label>
+                        <select id="url-installation-icon" required>
+                            <!-- Icons will be populated from icons.json -->
+                        </select>
+                    </div>
+                    <div class="form-group custom-icon">
+                        <label for="url-installation-custom-icon">CUSTOM ICON URL (Optional)</label>
+                        <input type="url" id="url-installation-custom-icon" placeholder="https://...">
+                    </div>
+                    <div class="form-actions">
+                        <button type="button" class="cancel-btn">Cancel</button>
+                        <button type="submit" class="create-btn">Create</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Launch Options Modal -->
+    <div id="launch-modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Launch Options</h2>
+                <span class="close">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="launch-options">
+                    <button id="serve-btn" class="primary-btn">
+                        <span class="material-icons">dns</span>
+                        Launch with Service Worker
+                    </button>
+                    <button id="blob-btn" class="secondary-btn">
+                        <span class="material-icons">open_in_new</span>
+                        Launch Directly
+                    </button>
+                </div>
+                <p class="launch-note">Service Worker mode is recommended for better performance.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@zip.js/zip.js/dist/zip.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/idb-keyval@6/dist/umd.js"></script>
+    <script src="js/versions.js"></script>
+    <script src="js/storage.js"></script>
+    <script src="js/launcher.js"></script>
+</body>
+</html>

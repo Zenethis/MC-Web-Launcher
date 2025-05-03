@@ -1,0 +1,19 @@
+{
+    "icons": [
+        {
+            "id": "default",
+            "name": "Default",
+            "path": "assets/minecraft-logo.png"
+        },
+        {
+            "id": "icon1",
+            "name": "Snowy",
+            "path": "assets/logo1.png"
+        },
+        {
+            "id": "icon2",
+            "name": "Mycelium",
+            "path": "assets/logo2.png"
+        }
+    ]
+}
