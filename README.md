@@ -27,8 +27,6 @@ cd Minecraft-Web-Launcher
 npm install -g serve
 serve
 
-text
-
 Visit `http://localhost:3000` in your browser.
 
 ---
