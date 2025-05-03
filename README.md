@@ -7,40 +7,25 @@ A modern, web-based Minecraft launcher built with a focus on simplicity, speed, 
 
 ---
 
-## 🚀 Features
+##  Features
 
 - **Web-Based**: No installation needed, works in any modern browser.
-- **Authentication**: Login with your Mojang or Microsoft account.
-- **Version Selection**: Choose and launch any official Minecraft version.
-- **Resource Packs & Mods**: Manage and apply resource packs and mods (if supported).
+- **Version Selection**: Choose and launch any versions provided.
 - **Open Source**: Community-driven and extensible.
 
 ---
 
-## 🖥️ Demo
-
-> **Live Demo:** _Coming Soon!_
-
----
-
-## 🛠️ Getting Started
+##  Getting Started
 
 ### 1. Clone the Repository
 
 git clone https://github.com/Zenethis/Minecraft-Web-Launcher.git
 cd Minecraft-Web-Launcher
 
-text
+### 2. Serve
 
-### 2. Install Dependencies
-
-npm install
-
-text
-
-### 3. Run Locally
-
-npm run dev
+npm install -g serve
+serve
 
 text
 
@@ -48,7 +33,7 @@ Visit `http://localhost:3000` in your browser.
 
 ---
 
-## ☁️ Deploy Your Own
+##  Deploy Your Own
 
 Deploy instantly to your favorite platform:
 
@@ -62,29 +47,21 @@ Deploy instantly to your favorite platform:
 
 ---
 
-## 📄 Configuration
+##  Configuration
 
-- Create a `.env.local` file for secrets and API keys (see `.env.example`).
-- Configure authentication providers as needed.
+- Easily change versions within the versions.json file.
 
 ---
 
-## 🤝 Contributing
+##  Contributing
 
 Contributions are welcome! Please open issues and pull requests.
 
 ---
 
-## 📜 License
+##  License
 
 This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
-
----
-
-## 🙏 Acknowledgements
-
-- Inspired by the Minecraft community and open-source launcher projects.
-- Special thanks to all contributors!
 
 ---
 
