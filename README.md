@@ -19,8 +19,9 @@ A modern, web-based Minecraft launcher built with a focus on simplicity, speed, 
 
 ### 1. Clone the Repository
 
-git clone https://github.com/Zenethis/Minecraft-Web-Launcher.git
-cd Minecraft-Web-Launcher
+`git clone https://github.com/Zenethis/Minecraft-Web-Launcher.git`
+
+`cd Minecraft-Web-Launcher`
 
 ### 2. Serve
 
