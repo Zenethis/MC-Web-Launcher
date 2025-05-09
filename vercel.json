@@ -1,0 +1,13 @@
+{
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Origin-Trial",
+          "value": "AgKH/K/5FzqvOWu2rE5XwvM7d1JcFR7tueFwj2DRmdgdeJg7IcwG6rrclWr5Xg2roHuKM94X9ofPFVy0ZMWAIQAAAAB0eyJvcmlnaW4iOiJodHRwczovL2RlbW8tbWMtbGF1bmNoZXIudmVyY2VsLmFwcDo0NDMiLCJmZWF0dXJlIjoiV2ViQXNzZW1ibHlKU1Byb21pc2VJbnRlZ3JhdGlvbiIsImV4cGlyeSI6MTc1MzE0MjQwMH0="
+        }
+      ]
+    }
+  ]
+}
