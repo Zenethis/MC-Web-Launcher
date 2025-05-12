@@ -651,3 +651,31 @@ body {
 .instance-dropdown::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
+.banner-text {
+    text-align: center;
+    color: var(--gray-text)
+}
+code {
+    background-color: var(--darker-bg);
+    color: var(--light-text);
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+.banner-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+.download-wasm{
+    display: flex;
+    position: absolute;
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: var(--light-text);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
