@@ -56,6 +56,20 @@
             "url": "/versions/indev.zip",
             "supportBlob": true
         },
+                {
+            "id": "eaglerforge-1.8",
+            "name": "Eaglerforge 1.8",
+            "type": "release",
+            "url": "/versions/efl-1.8.zip",
+            "supportBlob": true
+        },
+                        {
+            "id": "eaglerforge-1.12",
+            "name": "Eaglerforge 1.12",
+            "type": "release",
+            "url": "/versions/efl-1.12.zip",
+            "supportBlob": true
+        },
         {
             "id": "1.2.5",
             "name": "Minecraft 1.2.5",

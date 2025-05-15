@@ -44,6 +44,8 @@
                 <button class="tab-btn active" data-tab="play">Play</button>
                 <button class="tab-btn" data-tab="installations">Installations</button>
                 <button class="tab-btn" data-tab="skins">Skins</button>
+                <button class="tab-btn" data-tab="resource-packs">Resource Packs</button>
+                <button class="tab-btn" data-tab="mods">Mods</button>
             </nav>
             <div class="banner-section">
                 <img src="assets/banner.png" alt="Minecraft Banner" class="banner-image">
@@ -83,6 +85,18 @@
             <div class="tab-content hidden" id="skins-tab">
                 <div class="skins-content">
                     <h2>Skins feature not available in web version</h2>
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="resource-packs-tab">
+                <div class="packs-grid">
+                    <!-- Resource packs will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="mods-tab">
+                <div class="mods-grid">
+                    <!-- Mods will be populated by JavaScript -->
                 </div>
             </div>
         </div>
@@ -269,5 +283,6 @@
     <script src="js/versions.js"></script>
     <script src="js/storage.js"></script>
     <script src="js/launcher.js"></script>
+    <script src="js/content-manager.js"></script>
 </body>
 </html>

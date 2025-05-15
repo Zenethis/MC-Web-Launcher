@@ -1,0 +1,22 @@
+{
+  "mods": [
+    {
+      "title": "Jetpack",
+      "description": "Press H to fly, for Eaglerforge 1.8",
+      "icon": "assets/mods/jetpack.png",
+      "path": "mods/jetpack-ef.js"
+    },
+        {
+      "title": "StatsHud",
+      "description": "Stats HUD for Eaglerforge 1.8",
+      "icon": "assets/minecraft-logo.png",
+      "path": "mods/StatsHudV3.js"
+    },
+            {
+      "title": "Burmod Client",
+      "description": "Client for Eaglerforge 1.8",
+      "icon": "assets/minecraft-logo.png",
+      "path": "mods/burmod.js"
+    }
+  ]
+}

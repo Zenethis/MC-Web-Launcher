@@ -1,0 +1,22 @@
+{
+  "resourcePacks": [
+    {
+      "title": "Performance",
+      "description": "Better performance and FPS",
+      "icon": "assets/packs/performance.png",
+      "path": "packs/performance.zip"
+    },
+        {
+      "title": "Bare Bones",
+      "description": "Simplified textures",
+      "icon": "assets/packs/barebones.jpg",
+      "path": "packs/Bare Bones 1.11-1.12.zip"
+    },
+            {
+      "title": "Conquest Reforged",
+      "description": "A complete overhaul of Minecraft's textures for a medieval theme",
+      "icon": "assets/packs/conquest.png",
+      "path": "packs/Conquest Reforged RP.zip"
+    }
+  ]
+}
