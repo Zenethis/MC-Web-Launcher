@@ -8,25 +8,69 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-<link rel="manifest" href="/site.webmanifest">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
 </head>
 <body>
     <div class="launcher-container">
         <div class="sidebar">
-            <div class="logo">
-                <img src="assets/minecraft-logo.png" alt="Minecraft Logo">
-                <link rel="icon" type="image/png" href="/assets/minecraft-logo.png">
-            </div>
-            <div class="profile-section">
-                <div class="profile-img">
+            <div class="user-section">
+                <div class="user-avatar">
                     <img src="assets/steve.png" alt="Player Skin">
                 </div>
-                <span class="player-name">Player</span>
+                <div class="user-info">
+                    <span class="player-name">Player</span>
+                    <span class="account-type">Guest</span>
+                </div>
+                <div class="user-dropdown">
+                    <span class="material-icons">expand_more</span>
+                </div>
+            </div>
+            
+            <div class="sidebar-nav">
+                <div class="nav-item">
+                    <div class="nav-icon">
+                        <img src="assets/news.png" alt="News">
+                    </div>
+                    <span>News</span>
+                </div>
+                
+                <div class="nav-section">
+                    <div class="nav-item active">
+                        <div class="nav-icon">
+                            <img src="assets/minecraft-logo.png" alt="Java Edition">
+                        </div>
+                        <div class="nav-text">
+                            <span class="nav-label">Version:</span>
+                            <span class="nav-title">Eaglercraft</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="nav-item settings-item" id="settings-btn">
+                    <div class="nav-icon">
+                        <span class="material-icons">settings</span>
+                    </div>
+                    <span>Settings</span>
+                </div>
             </div>
         </div>
+        
         <div class="main-content">
+            <div class="game-header">
+                <h1>EAGLERCRAFT</h1>
+                <div class="tab-navigation">
+                    <button class="tab-btn active" data-tab="play">Play</button>
+                    <button class="tab-btn" data-tab="installations">Installations</button>
+                    <button class="tab-btn" data-tab="skins">Skins</button>
+                    <button class="tab-btn" data-tab="resource-packs">Resource Packs</button>
+                    <button class="tab-btn" data-tab="mods">Mods</button>
+                    <button class="tab-btn" data-tab="patch-notes">Patch notes</button>
+                    <button class="tab-btn" data-tab="data-url">Data Url</button>
+                </div>
+            </div>
+            
             <div class="download-progress-container hidden" id="download-progress">
                 <div class="progress-info">
                     <span class="progress-text">Downloading...</span>
@@ -40,63 +84,122 @@
                     <span class="total-size">0 MB</span>
                 </div>
             </div>
-            <nav class="nav-tabs">
-                <button class="tab-btn active" data-tab="play">Play</button>
-                <button class="tab-btn" data-tab="installations">Installations</button>
-                <button class="tab-btn" data-tab="skins">Skins</button>
-                <button class="tab-btn" data-tab="resource-packs">Resource Packs</button>
-                <button class="tab-btn" data-tab="mods">Mods</button>
-            </nav>
-            <div class="banner-section">
-                <img src="assets/banner.png" alt="Minecraft Banner" class="banner-image">
-                <p class="banner-text">Join our Eaglercraft 1.12.2 server at <code>ws://zenethis.exaroton.me:28734</code>!<br>
-                    Or join on Java at <code>mc.ashen-os.com</code>!</p>
-                    <div class="banner-buttons">
-                    <button class="download-wasm" onclick="const link = document.createElement('a'); link.href = '/versions/Eaglercraft_1.12_WASM_Offline_Download.zip'; link.download = 'Eaglercraft_1.12_WASM_Offline_Download.zip'; link.click();">Don't have file needed to play the server? Click me to download 1.12.2 WASM</button>
-                    </div>
-            </div>
+            
             <div class="tab-content" id="play-tab">
-                <div class="version-selector">
+                <div class="game-banner">
+                    <img src="assets/banner.jpg" alt="Minecraft Banner" style="width:100%;height:auto;display:block;">
+                    <div class="audio-visualizer-header">
+                        <canvas id="audio-visualizer" width="120" height="48"></canvas>
+                        <span class="visualizer-label">Eaglercraft Lofi Beats</span>
+                    </div>
+                </div>
+                <div class="version-selector" style="margin: 24px 0 0 0; justify-content: center;">
                     <select id="instance-select">
                         <option value="">Select an installation...</option>
                     </select>
                     <button id="play-btn" class="play-button">PLAY</button>
                 </div>
-            </div>
-
-            <div class="tab-content hidden" id="installations-tab">
-                <div class="installations-header">
-                    <button id="new-installation" class="new-installation-btn">
-                        <span class="material-icons">add</span>
-                        New Installation
-                    </button>
-                    <button id="new-url-installation" class="new-installation-btn">
-                        <span class="material-icons">link</span>
-                        From URL
-                    </button>
-                </div>
-                <div class="installations-scroll">
-                    <div class="installations-list">
-                        <!-- Installations will be populated by JavaScript -->
+                <div class="server-info">
+                    <p>Join our Eaglercraft 1.12.2 server at <code>ws://zenethis.exaroton.me:28734</code>!<br>
+                    Or join on Java at <code>mc.ashen-os.com</code>!</p>
+                    <div class="server-buttons">
+                        <button class="download-wasm" onclick="const link = document.createElement('a'); link.href = '/versions/Eaglercraft_1.12_WASM_Offline_Download.zip'; link.download = 'Eaglercraft_1.12_WASM_Offline_Download.zip'; link.click();">Don't have file needed to play the server? Click me to download 1.12.2 WASM</button>
                     </div>
                 </div>
             </div>
 
+            <div class="tab-content hidden" id="installations-tab">
+                <div class="installations-header">
+                    <div class="installations-actions">
+                        <button id="new-installation" class="new-installation-btn">
+                            <span class="material-icons">add</span>
+                            New...
+                        </button>
+                        <button id="new-url-installation" class="search-btn">
+                            <span class="material-icons">search</span>
+                            Search...
+                        </button>
+                    </div>
+                    
+                    <div class="installations-filters">
+                        <div class="sort-by">
+                            <span>SORT BY</span>
+                            <div class="sort-dropdown">
+                                <span>Latest played</span>
+                                <span class="material-icons">expand_more</span>
+                            </div>
+                        </div>
+                        
+                        <div class="version-filters">
+                            <span>VERSIONS</span>
+                            <div class="filter-options">
+                                <label class="filter-checkbox">
+                                    <input type="checkbox" checked>
+                                    <span class="checkmark"></span>
+                                    <span>Releases</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span>Snapshots</span>
+                                </label>
+                                <label class="filter-checkbox">
+                                    <input type="checkbox">
+                                    <span class="checkmark"></span>
+                                    <span>Historical</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="installations-list">
+                    <!-- Installations will be populated by JavaScript -->
+                </div>
+            </div>
+
             <div class="tab-content hidden" id="skins-tab">
-                <div class="skins-content">
-                    <h2>Skins feature not available in web version</h2>
+                <div class="skins-toolbar">
+                    <input type="text" id="custom-skin-name" placeholder="Enter Minecraft username...">
+                    <button id="custom-skin-btn">Show Skin</button>
+                </div>
+                <div class="skins-grid" id="skins-grid">
+                    <!-- Skins will be populated by JavaScript -->
+                </div>
+                <div id="skin-preview-container" style="margin-top:24px;display:none;">
+                    <iframe id="skin-preview-frame" src=""></iframe>
                 </div>
             </div>
 
             <div class="tab-content hidden" id="resource-packs-tab">
-                <div class="packs-grid">
-                    <!-- Resource packs will be populated by JavaScript -->
-                </div>
+                <div class="packs-grid"></div>
+                <!-- Resource packs will be populated by JavaScript -->
             </div>
 
             <div class="tab-content hidden" id="mods-tab">
                 <div class="mods-grid">
                     <!-- Mods will be populated by JavaScript -->
+                </div>
+            </div>
+            
+            <div class="tab-content hidden" id="patch-notes-tab">
+                <div class="patch-notes-content">
+                    <h2>Patch Notes</h2>
+                        <ul>
+                            <li><b>May 10 2025</b> - Initial release</li>
+                            <li><b>May 18 2025</b> - UI overhaul</li>
+
+                        </ul>
+                </div>
+            </div>
+
+            <div class="tab-content hidden" id="data-url-tab">
+                <h2>Data URL Bookmarklet Generator</h2>
+                <div id="data-url-controls" style="margin-bottom:18px;"></div>
+                <div id="data-url-bookmarklet-container"></div>
+                <div style="margin-top:18px;color:#aaa;font-size:0.98em;">
+                    <b>Instructions:</b> Select a Minecraft version with blob support, then drag the generated button to your bookmarks bar. When you click the bookmark, it will launch the selected version directly in your browser using a data URL.<br>
+                    <span style="color:#e57373;">Note: Data URLs can be very large and may not work in all browsers if the game is too big.</span>
                 </div>
             </div>
         </div>
@@ -107,6 +210,17 @@
     <div class="loading-overlay" id="loading-overlay">
         <div class="loading-spinner"></div>
         <div class="loading-text" id="loading-text">Loading...</div>
+    </div>
+
+    <audio id="bg-music" src="assets/audio/background-lofi.mp3" loop autoplay style="display:none"></audio>
+    <div id="settings-panel" class="settings-panel hidden">
+        <h2>Settings</h2>
+        <label style="display:flex;align-items:center;gap:8px;margin:16px 0;">
+            <input type="checkbox" id="toggle-music" checked>
+            Play background music
+        </label>
+        <!-- Song select will be injected here by JS -->
+        <button id="close-settings" style="margin-top:12px;">Close</button>
     </div>
 
     <!-- Installation Modal -->
@@ -128,17 +242,26 @@
                             <!-- Versions will be populated from versions.json -->
                         </select>
                     </div>
-                    <div class="form-group window-size">
-                        <label>WINDOW SIZE</label>
-                        <div class="size-inputs">
-                            <div class="size-input">
-                                <label for="window-width">Width</label>
-                                <input type="number" id="window-width" value="1280" min="800" required>
+                    <div class="form-group">
+                        <label>RESOLUTION</label>
+                        <div class="resolution-inputs">
+                            <div class="resolution-input">
+                                <div class="resolution-icon">
+                                    <span class="material-icons">desktop_windows</span>
+                                </div>
+                                <div class="resolution-fields">
+                                    <input type="number" id="window-width" value="1280" min="800" required>
+                                    <span>×</span>
+                                    <input type="number" id="window-height" value="720" min="600" required>
+                                </div>
                             </div>
-                            <div class="size-input">
-                                <label for="window-height">Height</label>
-                                <input type="number" id="window-height" value="720" min="600" required>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="game-directory">GAME DIRECTORY</label>
+                        <div class="directory-input">
+                            <input type="text" id="game-directory" value="<Use default directory>" disabled>
+                            <button type="button" class="browse-btn">BROWSE</button>
                         </div>
                     </div>
                     <div class="form-group">
@@ -174,17 +297,26 @@
                         <label for="edit-installation-name">NAME</label>
                         <input type="text" id="edit-installation-name" required>
                     </div>
-                    <div class="form-group window-size">
-                        <label>WINDOW SIZE</label>
-                        <div class="size-inputs">
-                            <div class="size-input">
-                                <label for="edit-window-width">Width</label>
-                                <input type="number" id="edit-window-width" value="1280" min="800" required>
+                    <div class="form-group">
+                        <label>RESOLUTION</label>
+                        <div class="resolution-inputs">
+                            <div class="resolution-input">
+                                <div class="resolution-icon">
+                                    <span class="material-icons">desktop_windows</span>
+                                </div>
+                                <div class="resolution-fields">
+                                    <input type="number" id="edit-window-width" value="1280" min="800" required>
+                                    <span>×</span>
+                                    <input type="number" id="edit-window-height" value="720" min="600" required>
+                                </div>
                             </div>
-                            <div class="size-input">
-                                <label for="edit-window-height">Height</label>
-                                <input type="number" id="edit-window-height" value="720" min="600" required>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-game-directory">GAME DIRECTORY</label>
+                        <div class="directory-input">
+                            <input type="text" id="edit-game-directory" value="<Use default directory>" disabled>
+                            <button type="button" class="browse-btn">BROWSE</button>
                         </div>
                     </div>
                     <div class="form-group">
@@ -199,7 +331,7 @@
                     </div>
                     <div class="form-actions">
                         <button type="button" class="cancel-btn">Cancel</button>
-                        <button type="submit" class="create-btn">Save Changes</button>
+                        <button type="submit" class="create-btn">Save</button>
                     </div>
                 </form>
             </div>
@@ -223,16 +355,18 @@
                         <label for="url-installation-url">ZIP FILE URL</label>
                         <input type="url" id="url-installation-url" required placeholder="https://...">
                     </div>
-                    <div class="form-group window-size">
-                        <label>WINDOW SIZE</label>
-                        <div class="size-inputs">
-                            <div class="size-input">
-                                <label for="url-window-width">Width</label>
-                                <input type="number" id="url-window-width" value="1280" min="800" required>
-                            </div>
-                            <div class="size-input">
-                                <label for="url-window-height">Height</label>
-                                <input type="number" id="url-window-height" value="720" min="600" required>
+                    <div class="form-group">
+                        <label>RESOLUTION</label>
+                        <div class="resolution-inputs">
+                            <div class="resolution-input">
+                                <div class="resolution-icon">
+                                    <span class="material-icons">desktop_windows</span>
+                                </div>
+                                <div class="resolution-fields">
+                                    <input type="number" id="url-window-width" value="1280" min="800" required>
+                                    <span>×</span>
+                                    <input type="number" id="url-window-height" value="720" min="600" required>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -279,6 +413,7 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@zip.js/zip.js/dist/zip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pako/2.1.0/pako.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/idb-keyval@6/dist/umd.js"></script>
     <script src="js/versions.js"></script>
     <script src="js/storage.js"></script>

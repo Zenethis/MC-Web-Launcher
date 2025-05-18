@@ -67,6 +67,16 @@ class ContentManager {
 
     async downloadPack(path, title) {
         try {
+            // Show downloading screen
+            const progress = document.getElementById('download-progress');
+            if (progress) {
+                progress.classList.remove('hidden');
+                progress.querySelector('.progress-text').textContent = 'Downloading...';
+                progress.querySelector('.progress-percentage').textContent = '';
+                progress.querySelector('.progress-bar-fill').style.width = '100%';
+                progress.querySelector('.downloaded-size').textContent = '';
+                progress.querySelector('.total-size').textContent = '';
+            }
             const response = await fetch(path);
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
@@ -79,9 +89,25 @@ class ContentManager {
             document.body.removeChild(a);
         } catch (error) {
             console.error('Error downloading resource pack:', error);
+        } finally {
+            // Hide downloading screen
+            const progress = document.getElementById('download-progress');
+            if (progress) progress.classList.add('hidden');
         }
-    }    async downloadMod(path, title) {
+    }
+
+    async downloadMod(path, title) {
         try {
+            // Show downloading screen
+            const progress = document.getElementById('download-progress');
+            if (progress) {
+                progress.classList.remove('hidden');
+                progress.querySelector('.progress-text').textContent = 'Downloading...';
+                progress.querySelector('.progress-percentage').textContent = '';
+                progress.querySelector('.progress-bar-fill').style.width = '100%';
+                progress.querySelector('.downloaded-size').textContent = '';
+                progress.querySelector('.total-size').textContent = '';
+            }
             const response = await fetch(path);
             const blob = await response.blob();
             const url = window.URL.createObjectURL(blob);
@@ -96,6 +122,10 @@ class ContentManager {
             document.body.removeChild(a);
         } catch (error) {
             console.error('Error downloading mod:', error);
+        } finally {
+            // Hide downloading screen
+            const progress = document.getElementById('download-progress');
+            if (progress) progress.classList.add('hidden');
         }
     }
 }

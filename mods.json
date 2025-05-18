@@ -17,6 +17,43 @@
       "description": "Client for Eaglerforge 1.8",
       "icon": "assets/minecraft-logo.png",
       "path": "mods/burmod.js"
-    }
+    },
+                {
+      "title": "AsyncSink",
+      "description": "Mod essential for many mods to work",
+      "icon": "assets/minecraft-logo.png",
+      "path": "mods/AsyncSink.js"
+    },
+                {
+      "title": "Guns Craftable",
+      "description": "Guns for Eaglerforge 1.8, requires AsyncSink",
+      "icon": "assets/minecraft-logo.png",
+      "path": "mods/guns_craftable.js"
+    },
+                    {
+      "title": "Jade",
+      "description": "See what block you are looking at, for Eaglerforge 1.8, requires AsyncSink and More Events",
+      "icon": "assets/minecraft-logo.png",
+      "path": "mods/Jade.js"
+    },
+                        {
+      "title": "More Events",
+      "description": "Library mod for Eaglerforge 1.8",
+      "icon": "assets/minecraft-logo.png",
+      "path": "mods/moreEvents.js"
+    },
+                        {
+      "title": "More Swords",
+      "description": "More swords for Eaglerforge 1.8, requires AsyncSink",
+      "icon": "assets/minecraft-logo.png",
+      "path": "mods/More Swords Mod.js"
+    },
+                            {
+      "title": "More Swords Extra",
+      "description": "Extra features for More Swords, requires AsyncSink",
+      "icon": "assets/minecraft-logo.png",
+      "path": "mods/More Swords Mod Extra.js"
+      }
+    
   ]
 }

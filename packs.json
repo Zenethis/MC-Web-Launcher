@@ -1,22 +1,40 @@
 {
   "resourcePacks": [
     {
-      "title": "Performance",
+      "title": "Performance 1.12.2",
       "description": "Better performance and FPS",
       "icon": "assets/packs/performance.png",
       "path": "packs/performance.zip"
     },
         {
-      "title": "Bare Bones",
+      "title": "Bare Bones 1.12.2",
       "description": "Simplified textures",
       "icon": "assets/packs/barebones.jpg",
       "path": "packs/Bare Bones 1.11-1.12.zip"
     },
             {
-      "title": "Conquest Reforged",
+      "title": "Conquest Reforged 1.12.2",
       "description": "A complete overhaul of Minecraft's textures for a medieval theme",
       "icon": "assets/packs/conquest.png",
       "path": "packs/Conquest Reforged RP.zip"
+    },
+                {
+      "title": "Conquest Reforged 1.8.8",
+      "description": "A complete overhaul of Minecraft's textures for a medieval theme",
+      "icon": "assets/packs/conquest.png",
+      "path": "packs/Conquest_1.8.zip"
+    },
+                    {
+      "title": "Faithful 32x - 1.8.8",
+      "description": "Double the resolution of the default textures",
+      "icon": "assets/packs/faithful.png",
+      "path": "packs/Faithful 32x - 1.8.9.zip"
+    },
+                        {
+      "title": "Faithful 32x - 1.12.2",
+      "description": "Double the resolution of the default textures",
+      "icon": "assets/packs/faithful.png",
+      "path": "packs/Faithful 32x - 1.12.2.zip"
     }
   ]
 }

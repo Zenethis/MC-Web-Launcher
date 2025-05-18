@@ -71,39 +71,11 @@
             "supportBlob": true
         },
         {
-            "id": "1.2.5",
-            "name": "Minecraft 1.2.5",
-            "type": "release",
-            "url": "/versions/1.2.5.zip",
-            "supportBlob": false
-        },
-        {
             "id": "classic",
             "name": "Minecraft Classic",
             "type": "release",
             "url": "/versions/classic.zip",
             "supportBlob": false
-        },
-        {
-            "id": "mc-web-client",
-            "name": "Minecraft Web Client",
-            "type": "release",
-            "url": "/versions/mc-web-client.zip",
-            "supportBlob": false
-        },
-        {
-            "id": "web-craft",
-            "name": "WebCraft",
-            "type": "release",
-            "url": "/versions/webcraft.zip",
-            "supportBlob": false
-        },
-        {
-            "id": "paper-mc",
-            "name": "Paper Minecraft",
-            "type": "release",
-            "url": "/versions/paper-mc.zip",
-            "supportBlob": true
         }
     ]
 }
